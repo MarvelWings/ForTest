@@ -1,0 +1,18 @@
+ public bool AddCitizenCardRecord(string  card,string xml)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.Append(@"INSERT INTO MAIN_CITIZEN_CARD_RECORD (CARD_ACCOUNT, SEND_XML)
+     VALUES (:card_account, :send_xml)");
+            DataParamCol parameters = new DataParamCol(
+              new InputDataParam("card_account", card),
+              new InputDataParam("send_xml", xml)
+              );
+            if (DB.ExecuteSql(sql.ToString(), parameters) != -1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
